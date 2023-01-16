@@ -11,3 +11,19 @@ console.log(dog.hasOwnProperty("name"));
 
 const des = Object.getOwnPropertyDescriptors(dog);
 console.log(des);
+
+const desc = Object.getOwnPropertyDescriptor(dog, "name");
+console.log(desc);
+const desc2 = Object.getOwnPropertyDescriptor(dog, "emoji");
+console.log(desc2);
+
+Object.defineProperty(dog, "name", {
+  value: "멍멍",
+  writable: false,
+  enumerable: false,
+  configurable: false,
+});
+
+console.log(dog.name);
+console.log(Object.keys(dog));
+console.log(Object.entries(dog));
