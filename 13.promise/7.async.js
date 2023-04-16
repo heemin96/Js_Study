@@ -28,14 +28,10 @@ function getOrange() {
 
 // 바나나와 사과를 같이 가지고 오기
 
-Promise.all([getBanana(), getApple(), getOrange()])
-  .then((fruits) => console.log("all", fruits))
-  .catch(console.log);
+async function fetchFruits() {
+  const banana = await getBanana();
+  const apple = await getApple();
+  return [banana, apple];
+}
 
-Promise.race([getBanana(), getApple()]).then((fruit) =>
-  console.log("race", fruit)
-);
-
-Promise.allSettled([getBanana(), getApple(), getOrange()])
-  .then((fruits) => console.log("all", fruits))
-  .catch(console.log);
+fetchFruits().then((fruits) => console.log(fruits));
